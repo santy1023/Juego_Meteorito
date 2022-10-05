@@ -11,7 +11,7 @@ que estos últimos deben recargarse en las estaciones de recargas.
 ***
 ***Engine:*** Godot v3.2.2
 
-***Lenguaje:***GDscript
+***Lenguaje:*** GDscript
 
 ***Plataforma:*** PC
 
