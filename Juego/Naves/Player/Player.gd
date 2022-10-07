@@ -11,6 +11,7 @@ var dir_rotacion:int = 0
 
 ## Atributos onready
 onready var canion:Canion = $Canion
+onready var laser_RayoLaser = $LaserBeam2D
 
 ## Metodos
 func _integrate_forces(_state: Physics2DDirectBodyState) -> void:
