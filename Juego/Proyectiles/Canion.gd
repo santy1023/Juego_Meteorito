@@ -22,9 +22,9 @@ func set_esta_disparando(disparando: bool) -> void:
 
 func disparar() -> void:
 	esta_enfriado = false
-	disparo_sfx.play()
 	timer_enfriamiento.start()
 	for punto_disparo in puntos_disparos:
+		disparo_sfx.play()
 		var new_proyectil:Proyectil = proyectil.instance()
 		new_proyectil.crear(
 			punto_disparo.global_position,
