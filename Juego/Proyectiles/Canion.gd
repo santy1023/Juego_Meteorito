@@ -32,7 +32,7 @@ func disparar() -> void:
 			velocidad_proyectil,
 			danio_proyectil
 		)
-		print ("piw piw estoy disparando")
+		Eventos.emit_signal("disparo", new_proyectil)
 
 ## Metodos
 func _ready() -> void:
