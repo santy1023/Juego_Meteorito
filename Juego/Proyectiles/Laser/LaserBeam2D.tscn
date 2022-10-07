@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Juego/Proyectiles/Laser/LaserBeam2D.gd" type="Script" id=1]
 [ext_resource path="res://Juego/Proyectiles/Laser/glowing_circle.png" type="Texture" id=2]
+[ext_resource path="res://TemporalAssets/sci-fi-sounds/Audio/laserLarge_000.ogg" type="AudioStream" id=3]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.582915, 1 )
@@ -109,3 +110,7 @@ process_material = SubResource( 9 )
 texture = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="LaserSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+bus = "Disparo"
