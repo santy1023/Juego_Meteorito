@@ -51,6 +51,6 @@ func player_input() -> void:
 		if Input.is_action_pressed("disparo_principal"):
 			canion.set_esta_disparando(true)
 			
-		if Input.is_action_just_pressed("disparo_principal"):
+		if Input.is_action_just_released("disparo_principal"):
 			canion.set_esta_disparando(false)
 
