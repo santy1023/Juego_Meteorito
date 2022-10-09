@@ -1,4 +1,4 @@
 extends Node
 
 signal disparo(proyectil)
-signal nave_destruida(posicion)
+signal nave_destruida(posicion, explosiones)
