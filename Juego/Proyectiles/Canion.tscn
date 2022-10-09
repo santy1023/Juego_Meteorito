@@ -18,7 +18,6 @@ velocidad_proyectil = 1600
 position = Vector2( 84.731, -51.2845 )
 stream = ExtResource( 3 )
 volume_db = -20.194
-bus = "Disparo"
 
 [node name="TimerEnfriamiento" type="Timer" parent="."]
 
