@@ -13,6 +13,7 @@ export var estela_maxima:int = 150
 var estado_actual:int = ESTADO.SPAWN
 var empuje:Vector2 = Vector2.ZERO
 var dir_rotacion:int = 0
+var hitpoints:float = 15.0
 
 ## Atributos Onready
 onready var canion:Canion = $Canion
@@ -20,6 +21,8 @@ onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
+onready var impacto_sfx:AudioStreamPlayer = $ImpactoSFX
+onready var escudo:Escudo = $Escudo
 
 ## Metodos
 func _ready() -> void:
@@ -35,8 +38,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("disparo_secundario"):
 		laser.set_is_casting(false)
-	
-	# Control estela y sonido motor
+
+#Contro Escudo
+	if event.is_action_pressed("escudo") and not escudo.get_esta_activado():
+		escudo.activar()
+
+# Control estela y sonido motor
 	if event.is_action_pressed("mover_adelante"):
 		estela.set_max_points(estela_maxima)
 		motor_sfx.sonido_on()
@@ -106,6 +113,12 @@ func esta_input_activo() -> bool:
 		return false
 	
 	return true
+
+func recibir_danio(danio: float) -> void:
+	hitpoints -= danio
+	if hitpoints <= 0.0:
+		destruir()
+	impacto_sfx.play()
 
 func destruir() -> void:
 	controlador_estados(ESTADO.MUERTO)
