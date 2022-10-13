@@ -6,10 +6,10 @@
 [ext_resource path="res://Juego/Naves/Player/Escudo/escudo.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Juego/Naves/Player/Escudo/Escudo.gd" type="Script" id=5]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=1]
 radius = 75.8755
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "activado"
 loop = true
 step = 0.2
@@ -50,8 +50,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "activando"
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteCompleto:visible")
@@ -126,8 +125,7 @@ tracks/5/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "default"
+[sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteCompleto:visible")
@@ -203,12 +201,14 @@ tracks/5/keys = {
 }
 
 [node name="Escudo" type="Area2D"]
+modulate = Color( 0.326506, 0.0805664, 0.859375, 1 )
+self_modulate = Color( 0.572549, 0.223529, 0.886275, 1 )
 collision_layer = 0
 collision_mask = 16
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="SpriteCompleto" type="Sprite" parent="."]
 visible = false
@@ -228,9 +228,9 @@ scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/activado = SubResource( 3 )
-anims/activando = SubResource( 2 )
-anims/default = SubResource( 1 )
+anims/activado = SubResource( 2 )
+anims/activando = SubResource( 3 )
+anims/default = SubResource( 4 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
