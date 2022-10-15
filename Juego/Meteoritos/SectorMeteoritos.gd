@@ -22,8 +22,8 @@ func spawner_aleatorio() -> int:
 
 ## Señales Internas
 func _on_SpawnTimer_timeout() -> void:
-	for spawner in $Spawners.get_children():
-		spawner.spawnear_meteorito()
+	if cantidad_meteoritos == 0:
+		$SpawnTimer.stop()
 		return
 	spawners[spawner_aleatorio()].spawnear_meteorito()
 	cantidad_meteoritos -= 1

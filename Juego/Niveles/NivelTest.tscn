@@ -16,7 +16,7 @@ meteorito = ExtResource( 6 )
 explosion_meteorito = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 792.67, 545.691 )
+position = Vector2( 1465.39, 673.507 )
 gravity_scale = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -28,4 +28,4 @@ scale = Vector2( 7.49842, 4.19961 )
 texture = ExtResource( 8 )
 
 [node name="SectorMeteoritos" parent="." instance=ExtResource( 5 )]
-position = Vector2( 946.092, 546.066 )
+position = Vector2( 973, 532.612 )
