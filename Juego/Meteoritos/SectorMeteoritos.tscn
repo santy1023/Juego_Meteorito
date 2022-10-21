@@ -29,12 +29,11 @@ extents = Vector2( 1406.08, 10 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 1405.45, 10 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=9]
 size = 50
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "advertencia"
+[sub_resource type="Animation" id=10]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
@@ -84,9 +83,22 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0, -19.2, -28.8 ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("Timer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ -1 ],
+"method": "start"
+} ]
+}
 
-[sub_resource type="Animation" id=10]
-resource_name = "default"
+[sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
@@ -275,6 +287,7 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 0.985883, 0.72, 0.72, 0.4 )
 self_modulate = Color( 0.941176, 0.454902, 0.454902, 1 )
 margin_right = 1917.0
 margin_bottom = 1078.0
@@ -291,7 +304,7 @@ margin_left = -562.874
 margin_top = -96.5977
 margin_right = 531.126
 margin_bottom = 20.4023
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 9 )
 text = "                  !ADVERTENCIA¡
 LLUVIA DE METEORITOS INMINENTE"
 __meta__ = {
@@ -300,10 +313,11 @@ __meta__ = {
 
 [node name="AdvertenciaSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -21.12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "advertencia"
-anims/advertencia = SubResource( 9 )
-anims/default = SubResource( 10 )
+anims/advertencia = SubResource( 10 )
+anims/default = SubResource( 11 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_SpawnTimer_timeout"]
