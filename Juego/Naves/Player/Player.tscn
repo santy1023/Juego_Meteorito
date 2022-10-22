@@ -109,7 +109,7 @@ bus = "SFX"
 current = true
 script = ExtResource( 11 )
 
-[node name="Tweenzoom" type="Tween" parent="CameraPlayer"]
+[node name="TweenZoom" type="Tween" parent="CameraPlayer"]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
