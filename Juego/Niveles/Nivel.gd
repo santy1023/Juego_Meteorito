@@ -89,7 +89,7 @@ func controlar_metoeritos_restantes() -> void:
 		)
 
 func transicion_camaras(desde: Vector2, hasta: Vector2, camara_actual: Camera2D, tiempo_transicion: float) -> void:
-	$CamaraNivel/TweenCamara.interpolate_property(
+	$TweenCamara.interpolate_property(
 		camara_actual,
 		"global_position",
 		desde,
@@ -99,7 +99,7 @@ func transicion_camaras(desde: Vector2, hasta: Vector2, camara_actual: Camera2D,
 		Tween.EASE_IN_OUT
 	)
 	camara_actual.current = true
-	$CamaraNivel/TweenCamara.start()
+	$TweenCamara.start()
 	
 func _on_meteorito_destruido(pos: Vector2) -> void:
 	var new_explosion:ExplosionMeteorito = explosion_meteorito.instance()

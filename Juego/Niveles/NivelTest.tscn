@@ -41,6 +41,6 @@ script = ExtResource( 10 )
 
 [node name="TweenZoom" type="Tween" parent="CamaraNivel"]
 
-[node name="TweenCamara" type="Tween" parent="CamaraNivel"]
+[node name="TweenCamara" type="Tween" parent="."]
 
-[connection signal="tween_completed" from="CamaraNivel/TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
+[connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
