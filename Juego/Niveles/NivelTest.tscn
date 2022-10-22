@@ -18,7 +18,7 @@ explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 274.556, 359.907 )
+position = Vector2( 927.184, 720.124 )
 gravity_scale = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -35,5 +35,8 @@ texture = ExtResource( 8 )
 position = Vector2( 932.326, 521.255 )
 
 [node name="CamaraNivel" type="Camera2D" parent="."]
+position = Vector2( 949.277, 538.206 )
 
 [node name="TweenCamara" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
