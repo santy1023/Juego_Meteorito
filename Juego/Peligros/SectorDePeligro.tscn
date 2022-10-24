@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 242.441, 89.5274 )
+
+[node name="SectorDePeligro" type="Area2D"]
+collision_layer = 0
+script = ExtResource( 1 )
+tipo_peligro = "Meteorito"
+numero_peligros = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
