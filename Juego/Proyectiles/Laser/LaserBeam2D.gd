@@ -4,6 +4,10 @@
 class_name RayoLaser
 extends RayCast2D
 
+
+## Export var
+export var energia:float = 4.0
+export var radio_degaste:float = -1.0
 # Speed at which the laser extends when first fired, in pixels per seconds.
 export var cast_speed := 7000.0
 # Maximum length of the laser in pixels.
@@ -25,8 +29,13 @@ onready var beam_particles := $BeamParticles2D
 onready var laser_sfx: AudioStreamPlayer2D = $LaserSFX
 onready var line_width: float = fill.width
 
+## Variables
+var energia_original:float
+
+## Metodos
 
 func _ready() -> void:
+	energia_original = energia
 	set_physics_process(false)
 	fill.points[1] = Vector2.ZERO
 
@@ -57,6 +66,12 @@ func set_is_casting(cast: bool) -> void:
 # Controls the emission of particles and extends the Line2D to `cast_to` or the ray's 
 # collision point, whichever is closest.
 func cast_beam(delta: float) -> void:
+	if energia <= 0.0:
+		set_is_casting(false)
+		return
+	
+	controlar_energia(radio_degaste * delta)
+	
 	var cast_point := cast_to
 
 	force_raycast_update()
@@ -86,3 +101,10 @@ func disappear() -> void:
 		tween.stop_all()
 	tween.interpolate_property(fill, "width", fill.width, 0, growth_time)
 	tween.start()
+
+func controlar_energia(consumo: float) -> void:
+	energia += consumo
+	if energia > energia_original:
+		energia = energia_original
+	#Solo Debug, QUITAR
+	print("Energia Laser", energia)
