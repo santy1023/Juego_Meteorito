@@ -458,3 +458,5 @@ texture = ExtResource( 5 )
 stream = ExtResource( 3 )
 volume_db = -24.395
 bus = "SFX"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

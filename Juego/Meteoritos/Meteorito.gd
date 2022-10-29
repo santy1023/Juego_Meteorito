@@ -25,6 +25,7 @@ func set_esta_en_sector(valor: bool) -> void:
 ## Metodos
 func _ready() -> void:
 	angular_velocity = vel_ang_base
+	$AnimationPlayer.play(elegir_explosion_aleatoria())
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	if esta_en_sector:
@@ -59,6 +60,14 @@ func crear(pos: Vector2, dir: Vector2, tamanio: float) -> void:
 	#Calcular hitpoints
 	hitpoints = hitpoints_base * tamanio
 
+func elegir_explosion_aleatoria() -> String:
+	randomize()
+	var num_anim:int = $AnimationPlayer.get_animation_list().size() - 1
+	var indice_anim_aleatoria:int = randi() % num_anim + 1
+	var lista_animacion:Array = $AnimationPlayer.get_animation_list()
+	
+	return lista_animacion[indice_anim_aleatoria]
+
 ## Metodos Custom
 func recibir_danio(danio: float) -> void:
 	hitpoints -= danio
@@ -75,4 +84,8 @@ func aleatorizar_velocidad() -> float:
 func destruir() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	Eventos.emit_signal("meteorito_destruido", global_position)
+	queue_free()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	queue_free()
